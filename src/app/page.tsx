@@ -3,6 +3,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { useChat } from "ai/react";
 import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
+import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+
+const PUBLISHABLE_KEY = process.env.VITE_CLERK_PUBLISHABLE_KEY
+
+if (!PUBLISHABLE_KEY) {
+  throw new Error("Missing Publishable Key")
+}
 
 export default function Home() {
   const { messages, handleSubmit, input, handleInputChange, error } = useChat();
@@ -13,6 +20,9 @@ export default function Home() {
   }
   
   return (
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+    <SignedIn>
+      <UserButton />
     <main className="fixed h-full w-full bg-muted">
       <div className="container h-full w-full flex flex-col py-8">
         <div className="flex-1 overflow-y-auto">
@@ -42,5 +52,10 @@ export default function Home() {
         </form>     
       </div>
     </main>
+    </SignedIn>
+    <SignedOut>
+        <SignInButton />
+    </SignedOut>
+    </ClerkProvider>
   );
 }
