@@ -3,8 +3,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { useChat } from "ai/react";
 import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
-import Image from 'next/image';
-//import logo from "./public/logo.png";
 
 export default function Home() {
   const { messages, handleSubmit, input, handleInputChange, error } = useChat();
