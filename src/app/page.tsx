@@ -2,8 +2,9 @@
 import { Textarea } from "@/components/ui/textarea";
 import { useChat } from "ai/react";
 import { Button } from "@/components/ui/button";
-import { Send, LogOut, Home as HomeIcon } from "lucide-react";
-import { Card, CardHeader, CardContent, CardFooter, CardTitle } from "@/components/ui/card";
+import { Send, Home as HomeIcon, LogOut } from "lucide-react";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { SignedIn, SignedOut, SignInButton, SignOutButton } from "@clerk/nextjs";
 
 export default function Home() {
   let { messages, handleSubmit, input, handleInputChange, error } = useChat();
@@ -20,11 +21,22 @@ export default function Home() {
           <HomeIcon size={24} />
           <div className="text-lg font-semibold">Support Bot</div>
         </div>
-        {/* TODO - add sign out feature */}
-        <Button className="bg-red-500 hover:bg-red-600 text-white rounded-lg px-4 py-2 flex items-center space-x-2 transform transition-transform duration-300 hover:scale-105">
-          <LogOut size={18} />
-          <span>Sign Out</span>
-        </Button>
+        <SignedOut>
+          <SignInButton mode="modal">
+            <Button className="bg-green-500 hover:bg-green-600 text-white rounded-lg px-4 py-2 flex items-center space-x-2 transform transition-transform duration-300 hover:scale-105">
+              <span>Sign In</span>
+            </Button>
+          </SignInButton>
+        </SignedOut>
+
+        <SignedIn>
+          <SignOutButton>
+            <Button className="bg-red-500 hover:bg-red-600 text-white rounded-lg px-4 py-2 flex items-center space-x-2 transform transition-transform duration-300 hover:scale-105">
+              <LogOut size={18} />
+              <span>Sign Out</span>
+            </Button>
+          </SignOutButton>
+        </SignedIn>
       </nav>
       
       <div className="container mx-auto h-full flex flex-col py-8">
