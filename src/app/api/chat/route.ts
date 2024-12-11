@@ -1,16 +1,26 @@
-import { openai } from "@ai-sdk/openai";
-import { streamText } from "ai";
+import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
-    const { messages } = await req.json();
-    console.log('Received messages:', messages);
+    try {
+        const { query } = await req.json();
 
-    const result = await streamText({
-        model: openai('gpt-3.5-turbo-0125'),
-        messages,
-    });
+        // Forward the query to the FastAPI backend
+        const response = await fetch('http://localhost:8000/generate-response/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ query }),
+        });
 
-    console.log('Result:', result);
+        if (!response.ok) {
+            throw new Error(`FastAPI backend error: ${response.statusText}`);
+        }
 
-    return result.toDataStreamResponse();
+        const data = await response.json();
+        return NextResponse.json({ response: data.response });
+    } catch (error) {
+        console.error('Error in Next.js API route:', error);
+        return NextResponse.json({ error: 'Failed to fetch response from backend' }, { status: 500 });
+    }
 }
