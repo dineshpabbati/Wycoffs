@@ -58,7 +58,7 @@ export default function Home() {
       <nav className="bg-gradient-to-r from-purple-500 to-blue-500 p-4 text-white flex justify-between items-center shadow-lg transform transition-transform duration-500 ease-in-out">
         <div className="flex items-center space-x-4">
           <HomeIcon size={24} />
-          <div className="text-lg font-semibold">Wyckoff Chatbot</div>
+          <div className="text-lg font-semibold">Wyckoff Wizard</div>
           
         </div>
         <SignedOut>
@@ -101,7 +101,7 @@ export default function Home() {
           <div className="flex items-center">
             <Textarea
               className="w-full text-lg p-4 border border-gray-300 rounded-lg"
-              placeholder="Message ChatAi"
+              placeholder="Ask me about trading..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
               disabled={loading}
