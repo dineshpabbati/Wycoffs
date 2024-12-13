@@ -22,7 +22,7 @@ export default function LandingPage() {
       <nav className="bg-gradient-to-r from-purple-500 to-blue-500 p-4 text-white flex justify-between items-center shadow-lg">
         <div className="flex items-center space-x-4">
           <HomeIcon size={24} />
-          <div className="text-lg font-semibold">Support Bot</div>
+          <div className="text-lg font-semibold">Wyckoff Wizard</div>
         </div>
         <SignedOut>
           <SignInButton mode="modal">
@@ -35,9 +35,9 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center h-[80vh] text-center p-8 bg-white">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Welcome to Support Bot</h1>
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">Welcome to Wyckoff Wizard!</h1>
         <p className="text-lg text-gray-700 mb-8">
-          Your AI-powered assistant for instant support. Chat with our intelligent bot to get help with your queries anytime, anywhere.
+        Your AI-powered assistant for Wyckoff trading support. Chat with our intelligent bot to get insights and answers to your trading queries anytime, anywhere.
         </p>
         <SignedOut>
           <SignInButton mode="modal">
@@ -56,7 +56,7 @@ export default function LandingPage() {
             <div className="w-full sm:w-1/2 lg:w-1/3 p-4">
               <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform transition-shadow duration-300">
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Instant Responses</h3>
-                <p className="text-gray-700">Get instant answers to your questions with our AI-powered chat.</p>
+                <p className="text-gray-700">Get instant answers to your Wyckoff trading questions with our AI-powered chatbot.</p>
               </div>
             </div>
             <div className="w-full sm:w-1/2 lg:w-1/3 p-4">

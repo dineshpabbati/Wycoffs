@@ -6,10 +6,10 @@ import pandas as pd
 import numpy as np
 import os
 
-# Load environment variables from .env
+
 load_dotenv()
 
-# Initialize FastAPI app
+
 app = FastAPI()
 
 class WyckoffChatbot:
@@ -21,7 +21,7 @@ class WyckoffChatbot:
         self.qa_pairs = []
 
     def load_data_from_csv(self, csv_path):
-        # Load CSV data with robust encoding handling
+       
         encodings = ['utf-8', 'latin-1', 'iso-8859-1', 'cp1252']
         for encoding in encodings:
             try:
@@ -71,14 +71,13 @@ class WyckoffChatbot:
             print(f"Error in generate_response: {e}")
             raise
 
-# Initialize chatbot
+
 chatbot = WyckoffChatbot()
 try:
     chatbot.load_data_from_csv("Wyckoff_qa.csv")
 except Exception as e:
     print(f"Error loading data: {e}")
 
-# Define API request model
 class Query(BaseModel):
     query: str
 
